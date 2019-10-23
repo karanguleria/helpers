@@ -2,7 +2,7 @@
     "name": "karanguleria/helpers",
     "description": "It includes the helper functions genrally nedded for every project.",
     "type": "library",
-    "license": "GNU",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Karan Guleria",
