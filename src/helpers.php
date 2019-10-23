@@ -4,20 +4,20 @@ namespace Karanguleria\Helpers;
 
 class helpers
 {
-	public  function current_url()
+	  function current_url()
 	{
 		$url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		return $url;
 	}
 
-	public  function vd($val)
+	  function vd($val)
 	{
 		echo "<pre>";
 		var_dump($val);
 		echo "</pre>";
 	}
 
-	public  function pr($val, $var_name = NULL)
+	  function pr($val, $var_name = NULL)
 	{
 		if (!empty($val)) {
 			echo "<pre>";
@@ -29,7 +29,7 @@ class helpers
 		}
 	}
 
-	public  function clean($str)
+	  function clean($str)
 	{
 		$str = @trim($str);
 		if (get_magic_quotes_gpc()) {
@@ -39,25 +39,25 @@ class helpers
 		return $str;
 	}
 
-	public  function format_names($value)
+	  function format_names($value)
 	{
 		$str = str_replace("_", " ", ucfirst($value));
 		return $str;
 	}
 
-	public  function text_limit($string, $length)
+	  function text_limit($string, $length)
 	{
 		$final_output = (strlen($string) > $length) ? substr($string, 0, $length) . '...' : $string;
 		return $final_output;
 	}
 
-	public  function format_date($date)
+	  function format_date($date)
 	{
 		$final_date = date("l, F d , Y", strtotime($date));
 		return $final_date;
 	}
 
-	public  function create_slug($value)
+	  function create_slug($value)
 	{
 		$value = preg_replace("/@/", ' at ', $value);
 		$value = preg_replace("/£/", ' pound ', $value);
@@ -81,13 +81,13 @@ class helpers
 		return $value;
 	}
 
-	public  function file_get_ext($file)
+	  function file_get_ext($file)
 	{
 		$ext = explode(".", $file);
 		return end($ext);
 	}
 
-	public  function file_name_details($FileName)
+	  function file_name_details($FileName)
 	{
 		$ext = file_get_ext($FileName);
 		$f_name = str_replace("." . $ext, "", $FileName);
@@ -96,7 +96,7 @@ class helpers
 		return $f_details;
 	}
 
-	public  function upload_img($insert_id, $file, $folder_name)
+	  function upload_img($insert_id, $file, $folder_name)
 	{
 		if ($folder_name == "") {
 			$current_dir = getcwd();
@@ -178,7 +178,7 @@ class helpers
 		return $result;
 	}
 
-	public  function upload_img2($insert_id, $file, $folder_name)
+	  function upload_img2($insert_id, $file, $folder_name)
 	{
 		if ($folder_name == "") {
 			$current_dir = getcwd();
@@ -259,7 +259,7 @@ class helpers
 		return $result;
 	}
 
-	public  function mysql_get_prim_key($table)
+	  function mysql_get_prim_key($table)
 	{
 		$getPKID = "";
 		$sql = "SHOW COLUMNS FROM `" . strtolower($table) . "`";
@@ -275,7 +275,7 @@ class helpers
 		return $getPKID;
 	}
 
-	public  function _getTables($DataBase, $db_obj)
+	  function _getTables($DataBase, $db_obj)
 	{
 		$Tables = $db_obj->query("SHOW TABLES FROM " . $DataBase)->fetchAll();
 		foreach ($Tables as $k => $info) {
@@ -284,7 +284,7 @@ class helpers
 		return $tbl_array;
 	}
 
-	public  function _getAttributes($table)
+	  function _getAttributes($table)
 	{
 		$sql = "SHOW FIELDS FROM `" . strtolower($table) . "`";
 		$ts  = mysql_query($sql);
@@ -299,13 +299,13 @@ class helpers
 		}
 	}
 
-	public  function _getAttrs($Table, $db_obj)
+	  function _getAttrs($Table, $db_obj)
 	{
 		$attrs = $db_obj->query("SHOW FIELDS FROM `" . strtolower($Table) . "`")->fetchAll();
 		return $attrs;
 	}
 
-	public  function slug($value)
+	  function slug($value)
 	{
 		$value = preg_replace("/@/", ' at ', $value);
 		$value = preg_replace("/£/", ' pound ', $value);
@@ -329,14 +329,14 @@ class helpers
 		return $value;
 	}
 
-	public  function copyright()
+	  function copyright()
 	{
 		return '<footer>
 <p>Designed and Developed by <a href="http://swap.com" target="_blank"><strong>Swap Development</strong></a>.</p>
 </footer>';
 	}
 
-	public  function timeago($time, $timezone)
+	  function timeago($time, $timezone)
 	{
 
 		date_default_timezone_set($timezone);
@@ -392,7 +392,7 @@ class helpers
 		}
 	}
 
-	public  function get_multi_img_upload_array($files)
+	  function get_multi_img_upload_array($files)
 	{
 		$post_key_arr = array_keys($files['name']);
 		foreach ($post_key_arr as $k => $post_key) {
@@ -403,7 +403,7 @@ class helpers
 		return $upload_files_array;
 	}
 
-	public  function multi_img_upload($upload_files_array)
+	  function multi_img_upload($upload_files_array)
 	{
 		foreach ($upload_files_array as $post_key => $upload_array) {
 			if ($upload_array['error'] != 4) {
@@ -415,7 +415,7 @@ class helpers
 		return $post_data;
 	}
 
-	public  function multi_img_upload2($upload_files_array)
+	  function multi_img_upload2($upload_files_array)
 	{
 		foreach ($upload_files_array as $post_key => $upload_array) {
 			if ($upload_array['error'] != 4) {
@@ -431,7 +431,7 @@ class helpers
 		return $post_data;
 	}
 
-	public  function db_mapping_fields($fields_mappings, $type)
+	  function db_mapping_fields($fields_mappings, $type)
 	{
 		$fields_array = array();
 		foreach ($fields_mappings as $mappings) {
@@ -442,7 +442,7 @@ class helpers
 		return $fields_array;
 	}
 
-	public  function db_slug_fields($fields_mappings)
+	  function db_slug_fields($fields_mappings)
 	{
 		$fields_array = array();
 		foreach ($fields_mappings as $mappings) {
@@ -452,7 +452,7 @@ class helpers
 		return $fields_array;
 	}
 
-	public  function db_get_another_data_fields($fields_mappings)
+	  function db_get_another_data_fields($fields_mappings)
 	{
 		$fields_array = array();
 		foreach ($fields_mappings as $mappings) {
@@ -462,7 +462,7 @@ class helpers
 		return $fields_array;
 	}
 
-	public  function db_file_fields($fields_mappings)
+	  function db_file_fields($fields_mappings)
 	{
 		$file_fields = array();
 		foreach ($fields_mappings as $mappings) {
@@ -473,7 +473,7 @@ class helpers
 		return $file_fields;
 	}
 
-	public  function sendEmail($to, $subj, $msg, $shortcodes = null, $from = null, $mail)
+	  function sendEmail($to, $subj, $msg, $shortcodes = null, $from = null, $mail)
 	{
 		$mail->ClearAddresses();
 		$mail->ClearAllRecipients();
@@ -522,7 +522,7 @@ class helpers
 	}
 
 	/** GET REAL IP **/
-	public  function getRealIp()
+	  function getRealIp()
 	{
 		$ip = getenv('HTTP_CLIENT_IP') ?: getenv('HTTP_X_FORWARDED_FOR') ?: getenv('HTTP_X_FORWARDED') ?: getenv('HTTP_FORWARDED_FOR') ?: getenv('HTTP_FORWARDED') ?: getenv('REMOTE_ADDR');
 
@@ -530,7 +530,7 @@ class helpers
 	}
 	/** END FUNC GET REAL IP **/
 
-	public  function get_directory_list($Path)
+	  function get_directory_list($Path)
 	{
 		$Directories = array();
 		$od = opendir($Path . "/");
@@ -544,7 +544,7 @@ class helpers
 		return $Directories;
 	}
 
-	public  function get_upload_file_location($Field_Name, $File_Fields)
+	  function get_upload_file_location($Field_Name, $File_Fields)
 	{
 		$loc = '';
 		if (!empty($File_Fields)) {
@@ -558,7 +558,7 @@ class helpers
 		return;
 	}
 
-	public  function rrmdir($dir)
+	  function rrmdir($dir)
 	{
 		if (is_dir($dir)) {
 			$objects = scandir($dir);
@@ -573,7 +573,7 @@ class helpers
 		}
 	}
 
-	public  function remove_empty_locations($Array)
+	  function remove_empty_locations($Array)
 	{
 		if (is_array($Array)) {
 			$new_array = array();
@@ -592,15 +592,15 @@ class helpers
 		return;
 	}
 
-	public  function funcs()
+	  function funcs()
 	{
-		$a = get_defined_public  functions();
+		$a = get_defined_  functions();
 		$user_defined = $a['user'];
 		sort($user_defined);
 		pr($user_defined);
 	}
 
-	public  function export($db_obj, $skip_data = false)
+	  function export($db_obj, $skip_data = false)
 	{
 		$export_string = "";
 		$db_name = mysql_current_db($db_obj);
@@ -686,13 +686,13 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return $a;
 	}
 
-	public  function mysql_current_db($db_obj)
+	  function mysql_current_db($db_obj)
 	{
 		$r = $db_obj->query("SELECT DATABASE()")->fetchAll();
 		return $r[0][0];
 	}
 
-	public  function directory_contents($Dir_Path, $ext = NULL)
+	  function directory_contents($Dir_Path, $ext = NULL)
 	{
 		$dir_data = scandir($Dir_Path);
 		$new_dir_data = array();
@@ -713,7 +713,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return $new_dir_data;
 	}
 
-	public  function backup_db($db_obj)
+	  function backup_db($db_obj)
 	{
 		$db_name = mysql_current_db($db_obj);
 		$aa = export($db_obj, true);
@@ -741,7 +741,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return true;
 	}
 
-	public  function restore_db($db_obj, $Restore_Path)
+	  function restore_db($db_obj, $Restore_Path)
 	{
 
 		$temp = '';
@@ -775,7 +775,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return true;
 	}
 
-	public  function run_sql_file($location, $db_obj)
+	  function run_sql_file($location, $db_obj)
 	{
 		//load file
 		$commands = file_get_contents($location);
@@ -818,13 +818,13 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		);
 	}
 
-	public  function startsWith($haystack, $needle)
+	  function startsWith($haystack, $needle)
 	{
 		$length = strlen($needle);
 		return (substr($haystack, 0, $length) === $needle);
 	}
 
-	public  function get_backup_dates()
+	  function get_backup_dates()
 	{
 		$restore_dates = array();
 		$dir_path = getcwd() . "\config\backup_restore";
@@ -835,7 +835,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return $restore_dates;
 	}
 
-	public  function get_restore_pts($got_date)
+	  function get_restore_pts($got_date)
 	{
 		$restore_pts = array();
 		$dir_path = getcwd() . "\config\backup_restore\\" . $got_date;
@@ -847,7 +847,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 	}
 
 	// Pagination set on page //   
-	public  function paginate($perpage, $page_no_var)
+	  function paginate($perpage, $page_no_var)
 	{
 
 		if (isset($page_no_var) && $page_no_var) {
