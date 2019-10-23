@@ -5,6 +5,6 @@ It includes the helper functions needed
 require __DIR__.'/vendor/autoload.php';
 
 use Helpers\Helpers;  
-$helpers = new Helpers();
-$cars = array("Volvo", "BMW", "Toyota");
-$helpers->pr($cars);
+$helpers = new Helpers();  
+$cars = array("Volvo", "BMW", "Toyota");  
+$helpers->pr($cars);  
