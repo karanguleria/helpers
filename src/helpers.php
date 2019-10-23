@@ -592,13 +592,13 @@ class helpers
 		return;
 	}
 
-	  function funcs()
-	{
-		$a = get_defined_  functions();
-		$user_defined = $a['user'];
-		sort($user_defined);
-		pr($user_defined);
-	}
+	//   function funcs()
+	// {
+	// 	$a = get_defined_  functions();
+	// 	$user_defined = $a['user'];
+	// 	sort($user_defined);
+	// 	pr($user_defined);
+	// }
 
 	  function export($db_obj, $skip_data = false)
 	{
