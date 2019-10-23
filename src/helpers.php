@@ -4,20 +4,20 @@ namespace Karanguleria\Helpers;
 
 class helpers
 {
-	function current_url()
+	public static function current_url()
 	{
 		$url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		return $url;
 	}
 
-	function vd($val)
+	public static function vd($val)
 	{
 		echo "<pre>";
 		var_dump($val);
 		echo "</pre>";
 	}
 
-	function pr($val, $var_name = NULL)
+	public static function pr($val, $var_name = NULL)
 	{
 		if (!empty($val)) {
 			echo "<pre>";
@@ -29,7 +29,7 @@ class helpers
 		}
 	}
 
-	function clean($str)
+	public static function clean($str)
 	{
 		$str = @trim($str);
 		if (get_magic_quotes_gpc()) {
@@ -39,25 +39,25 @@ class helpers
 		return $str;
 	}
 
-	function format_names($value)
+	public static function format_names($value)
 	{
 		$str = str_replace("_", " ", ucfirst($value));
 		return $str;
 	}
 
-	function text_limit($string, $length)
+	public static function text_limit($string, $length)
 	{
 		$final_output = (strlen($string) > $length) ? substr($string, 0, $length) . '...' : $string;
 		return $final_output;
 	}
 
-	function format_date($date)
+	public static function format_date($date)
 	{
 		$final_date = date("l, F d , Y", strtotime($date));
 		return $final_date;
 	}
 
-	function create_slug($value)
+	public static function create_slug($value)
 	{
 		$value = preg_replace("/@/", ' at ', $value);
 		$value = preg_replace("/£/", ' pound ', $value);
@@ -81,13 +81,13 @@ class helpers
 		return $value;
 	}
 
-	function file_get_ext($file)
+	public static function file_get_ext($file)
 	{
 		$ext = explode(".", $file);
 		return end($ext);
 	}
 
-	function file_name_details($FileName)
+	public static function file_name_details($FileName)
 	{
 		$ext = file_get_ext($FileName);
 		$f_name = str_replace("." . $ext, "", $FileName);
@@ -96,7 +96,7 @@ class helpers
 		return $f_details;
 	}
 
-	function upload_img($insert_id, $file, $folder_name)
+	public static function upload_img($insert_id, $file, $folder_name)
 	{
 		if ($folder_name == "") {
 			$current_dir = getcwd();
@@ -178,7 +178,7 @@ class helpers
 		return $result;
 	}
 
-	function upload_img2($insert_id, $file, $folder_name)
+	public static function upload_img2($insert_id, $file, $folder_name)
 	{
 		if ($folder_name == "") {
 			$current_dir = getcwd();
@@ -259,7 +259,7 @@ class helpers
 		return $result;
 	}
 
-	function mysql_get_prim_key($table)
+	public static function mysql_get_prim_key($table)
 	{
 		$getPKID = "";
 		$sql = "SHOW COLUMNS FROM `" . strtolower($table) . "`";
@@ -275,7 +275,7 @@ class helpers
 		return $getPKID;
 	}
 
-	function _getTables($DataBase, $db_obj)
+	public static function _getTables($DataBase, $db_obj)
 	{
 		$Tables = $db_obj->query("SHOW TABLES FROM " . $DataBase)->fetchAll();
 		foreach ($Tables as $k => $info) {
@@ -284,7 +284,7 @@ class helpers
 		return $tbl_array;
 	}
 
-	function _getAttributes($table)
+	public static function _getAttributes($table)
 	{
 		$sql = "SHOW FIELDS FROM `" . strtolower($table) . "`";
 		$ts  = mysql_query($sql);
@@ -299,13 +299,13 @@ class helpers
 		}
 	}
 
-	function _getAttrs($Table, $db_obj)
+	public static function _getAttrs($Table, $db_obj)
 	{
 		$attrs = $db_obj->query("SHOW FIELDS FROM `" . strtolower($Table) . "`")->fetchAll();
 		return $attrs;
 	}
 
-	function slug($value)
+	public static function slug($value)
 	{
 		$value = preg_replace("/@/", ' at ', $value);
 		$value = preg_replace("/£/", ' pound ', $value);
@@ -329,14 +329,14 @@ class helpers
 		return $value;
 	}
 
-	function copyright()
+	public static function copyright()
 	{
 		return '<footer>
 <p>Designed and Developed by <a href="http://swap.com" target="_blank"><strong>Swap Development</strong></a>.</p>
 </footer>';
 	}
 
-	function timeago($time, $timezone)
+	public static function timeago($time, $timezone)
 	{
 
 		date_default_timezone_set($timezone);
@@ -392,7 +392,7 @@ class helpers
 		}
 	}
 
-	function get_multi_img_upload_array($files)
+	public static function get_multi_img_upload_array($files)
 	{
 		$post_key_arr = array_keys($files['name']);
 		foreach ($post_key_arr as $k => $post_key) {
@@ -403,7 +403,7 @@ class helpers
 		return $upload_files_array;
 	}
 
-	function multi_img_upload($upload_files_array)
+	public static function multi_img_upload($upload_files_array)
 	{
 		foreach ($upload_files_array as $post_key => $upload_array) {
 			if ($upload_array['error'] != 4) {
@@ -415,7 +415,7 @@ class helpers
 		return $post_data;
 	}
 
-	function multi_img_upload2($upload_files_array)
+	public static function multi_img_upload2($upload_files_array)
 	{
 		foreach ($upload_files_array as $post_key => $upload_array) {
 			if ($upload_array['error'] != 4) {
@@ -431,7 +431,7 @@ class helpers
 		return $post_data;
 	}
 
-	function db_mapping_fields($fields_mappings, $type)
+	public static function db_mapping_fields($fields_mappings, $type)
 	{
 		$fields_array = array();
 		foreach ($fields_mappings as $mappings) {
@@ -442,7 +442,7 @@ class helpers
 		return $fields_array;
 	}
 
-	function db_slug_fields($fields_mappings)
+	public static function db_slug_fields($fields_mappings)
 	{
 		$fields_array = array();
 		foreach ($fields_mappings as $mappings) {
@@ -452,7 +452,7 @@ class helpers
 		return $fields_array;
 	}
 
-	function db_get_another_data_fields($fields_mappings)
+	public static function db_get_another_data_fields($fields_mappings)
 	{
 		$fields_array = array();
 		foreach ($fields_mappings as $mappings) {
@@ -462,7 +462,7 @@ class helpers
 		return $fields_array;
 	}
 
-	function db_file_fields($fields_mappings)
+	public static function db_file_fields($fields_mappings)
 	{
 		$file_fields = array();
 		foreach ($fields_mappings as $mappings) {
@@ -473,7 +473,7 @@ class helpers
 		return $file_fields;
 	}
 
-	function sendEmail($to, $subj, $msg, $shortcodes = null, $from = null, $mail)
+	public static function sendEmail($to, $subj, $msg, $shortcodes = null, $from = null, $mail)
 	{
 		$mail->ClearAddresses();
 		$mail->ClearAllRecipients();
@@ -522,7 +522,7 @@ class helpers
 	}
 
 	/** GET REAL IP **/
-	function getRealIp()
+	public static function getRealIp()
 	{
 		$ip = getenv('HTTP_CLIENT_IP') ?: getenv('HTTP_X_FORWARDED_FOR') ?: getenv('HTTP_X_FORWARDED') ?: getenv('HTTP_FORWARDED_FOR') ?: getenv('HTTP_FORWARDED') ?: getenv('REMOTE_ADDR');
 
@@ -530,7 +530,7 @@ class helpers
 	}
 	/** END FUNC GET REAL IP **/
 
-	function get_directory_list($Path)
+	public static function get_directory_list($Path)
 	{
 		$Directories = array();
 		$od = opendir($Path . "/");
@@ -544,7 +544,7 @@ class helpers
 		return $Directories;
 	}
 
-	function get_upload_file_location($Field_Name, $File_Fields)
+	public static function get_upload_file_location($Field_Name, $File_Fields)
 	{
 		$loc = '';
 		if (!empty($File_Fields)) {
@@ -558,7 +558,7 @@ class helpers
 		return;
 	}
 
-	function rrmdir($dir)
+	public static function rrmdir($dir)
 	{
 		if (is_dir($dir)) {
 			$objects = scandir($dir);
@@ -573,7 +573,7 @@ class helpers
 		}
 	}
 
-	function remove_empty_locations($Array)
+	public static function remove_empty_locations($Array)
 	{
 		if (is_array($Array)) {
 			$new_array = array();
@@ -592,15 +592,15 @@ class helpers
 		return;
 	}
 
-	function funcs()
+	public static function funcs()
 	{
-		$a = get_defined_functions();
+		$a = get_defined_public static functions();
 		$user_defined = $a['user'];
 		sort($user_defined);
 		pr($user_defined);
 	}
 
-	function export($db_obj, $skip_data = false)
+	public static function export($db_obj, $skip_data = false)
 	{
 		$export_string = "";
 		$db_name = mysql_current_db($db_obj);
@@ -686,13 +686,13 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return $a;
 	}
 
-	function mysql_current_db($db_obj)
+	public static function mysql_current_db($db_obj)
 	{
 		$r = $db_obj->query("SELECT DATABASE()")->fetchAll();
 		return $r[0][0];
 	}
 
-	function directory_contents($Dir_Path, $ext = NULL)
+	public static function directory_contents($Dir_Path, $ext = NULL)
 	{
 		$dir_data = scandir($Dir_Path);
 		$new_dir_data = array();
@@ -713,7 +713,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return $new_dir_data;
 	}
 
-	function backup_db($db_obj)
+	public static function backup_db($db_obj)
 	{
 		$db_name = mysql_current_db($db_obj);
 		$aa = export($db_obj, true);
@@ -741,7 +741,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return true;
 	}
 
-	function restore_db($db_obj, $Restore_Path)
+	public static function restore_db($db_obj, $Restore_Path)
 	{
 
 		$temp = '';
@@ -775,7 +775,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return true;
 	}
 
-	function run_sql_file($location, $db_obj)
+	public static function run_sql_file($location, $db_obj)
 	{
 		//load file
 		$commands = file_get_contents($location);
@@ -818,13 +818,13 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		);
 	}
 
-	function startsWith($haystack, $needle)
+	public static function startsWith($haystack, $needle)
 	{
 		$length = strlen($needle);
 		return (substr($haystack, 0, $length) === $needle);
 	}
 
-	function get_backup_dates()
+	public static function get_backup_dates()
 	{
 		$restore_dates = array();
 		$dir_path = getcwd() . "\config\backup_restore";
@@ -835,7 +835,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 		return $restore_dates;
 	}
 
-	function get_restore_pts($got_date)
+	public static function get_restore_pts($got_date)
 	{
 		$restore_pts = array();
 		$dir_path = getcwd() . "\config\backup_restore\\" . $got_date;
@@ -847,7 +847,7 @@ PRIMARY KEY (`" . $field_info['Field'] . "`)";
 	}
 
 	// Pagination set on page //   
-	function paginate($perpage, $page_no_var)
+	public static function paginate($perpage, $page_no_var)
 	{
 
 		if (isset($page_no_var) && $page_no_var) {
